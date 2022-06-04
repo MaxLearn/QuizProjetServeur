@@ -31,14 +31,71 @@ namespace quizExamen.Controllers
             }
             return View();
         }
-        public IActionResult CreateQuiz(string pattern)
+
+        public int PasserQuestionsParCategory(int category)
         {
-            if(pattern != null)
-            {
-                // "facile=1;moyen=2;difficile=1;"
+        
+                var listeQuestions = context.Question.Where(question => question.CategoryId == category).ToList();
+
+            Random rnd = new Random();
+
+            int questionIndex = rnd.Next(listeQuestions.Count);
+            var question = listeQuestions.ElementAt(questionIndex);
 
 
-            }
+            return (int)question.CategoryId;
+
+            
+        }
+
+        private object Random(object length)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult CreateQuiz(string name, string email, int easy, int medium, int hard)
+        {            
+                Quiz quiz = new Quiz();
+                quiz.UserName = name;
+                quiz.Email = email;
+
+                context.Add<Quiz>(quiz);
+                context.SaveChanges();
+
+                var newUserId = context.Quiz.Find(name);
+
+                
+                for (int i = 0; i < easy; i++)
+                {
+                    QuestionQuiz questionQuiz = new QuestionQuiz();
+                    questionQuiz.QuizId = quiz.QuizId;
+                    questionQuiz.QuestionId = PasserQuestionsParCategory(1);
+                context.Add<QuestionQuiz>(questionQuiz);
+                context.SaveChanges();
+                }
+                
+            for (int i = 0; i < medium; i++)
+                {
+                QuestionQuiz questionQuiz = new QuestionQuiz();
+                questionQuiz.QuizId = quiz.QuizId;
+                questionQuiz.QuestionId = PasserQuestionsParCategory(2);
+                context.Add<QuestionQuiz>(questionQuiz);
+                context.SaveChanges();
+                }
+                
+            for (int i = 0; i < hard; i++)
+                {
+                QuestionQuiz questionQuiz = new QuestionQuiz();
+                questionQuiz.QuizId = quiz.QuizId;
+                questionQuiz.QuestionId = PasserQuestionsParCategory(3);
+                context.Add<QuestionQuiz>(questionQuiz);
+                context.SaveChanges();
+                }
+
+
+            return View();
+
+
         }
     }
 

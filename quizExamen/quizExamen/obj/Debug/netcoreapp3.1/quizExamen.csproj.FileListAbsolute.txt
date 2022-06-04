@@ -150,3 +150,13 @@ C:\Users\maxim\source\repos\quizExamen\quizExamen\bin\Debug\netcoreapp3.1\zh-Han
 C:\Users\maxim\source\repos\quizExamen\quizExamen\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\maxim\source\repos\quizExamen\quizExamen\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\maxim\source\repos\quizExamen\quizExamen\obj\Debug\netcoreapp3.1\Razor\Views\Home\PasserQuiz.cshtml.g.cs
+C:\Users\maxim\Documents\GitHub\QuizProjetServeur\quizExamen\quizExamen\obj\Debug\netcoreapp3.1\quizExamen.csproj.AssemblyReference.cache
+C:\Users\maxim\Documents\GitHub\QuizProjetServeur\quizExamen\quizExamen\obj\Debug\netcoreapp3.1\quizExamen.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maxim\Documents\GitHub\QuizProjetServeur\quizExamen\quizExamen\obj\Debug\netcoreapp3.1\quizExamen.AssemblyInfoInputs.cache
+C:\Users\maxim\Documents\GitHub\QuizProjetServeur\quizExamen\quizExamen\obj\Debug\netcoreapp3.1\quizExamen.AssemblyInfo.cs
+C:\Users\maxim\Documents\GitHub\QuizProjetServeur\quizExamen\quizExamen\obj\Debug\netcoreapp3.1\quizExamen.csproj.CoreCompileInputs.cache
+C:\Users\maxim\Documents\GitHub\QuizProjetServeur\quizExamen\quizExamen\obj\Debug\netcoreapp3.1\quizExamen.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\maxim\Documents\GitHub\QuizProjetServeur\quizExamen\quizExamen\obj\Debug\netcoreapp3.1\quizExamen.RazorAssemblyInfo.cache
+C:\Users\maxim\Documents\GitHub\QuizProjetServeur\quizExamen\quizExamen\obj\Debug\netcoreapp3.1\quizExamen.RazorAssemblyInfo.cs
+C:\Users\maxim\Documents\GitHub\QuizProjetServeur\quizExamen\quizExamen\obj\Debug\netcoreapp3.1\quizExamen.dll
+C:\Users\maxim\Documents\GitHub\QuizProjetServeur\quizExamen\quizExamen\obj\Debug\netcoreapp3.1\quizExamen.pdb

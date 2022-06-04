@@ -8718,11 +8718,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maxim\\source\\repos\\quizExamen\\quizExamen\\quizExamen.csproj",
+      "projectUniqueName": "C:\\Users\\maxim\\Documents\\GitHub\\QuizProjetServeur\\quizExamen\\quizExamen\\quizExamen.csproj",
       "projectName": "quizExamen",
-      "projectPath": "C:\\Users\\maxim\\source\\repos\\quizExamen\\quizExamen\\quizExamen.csproj",
+      "projectPath": "C:\\Users\\maxim\\Documents\\GitHub\\QuizProjetServeur\\quizExamen\\quizExamen\\quizExamen.csproj",
       "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maxim\\source\\repos\\quizExamen\\quizExamen\\obj\\",
+      "outputPath": "C:\\Users\\maxim\\Documents\\GitHub\\QuizProjetServeur\\quizExamen\\quizExamen\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config",
