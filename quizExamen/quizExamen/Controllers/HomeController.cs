@@ -20,30 +20,41 @@ namespace quizExamen.Controllers
 
             return View();
         }
-        public IActionResult AfficherQuestions(Quiz selection)
+
+        public IActionResult SaveResponse( response)
         {
-                    int quizID = selection.QuizId;
-
-                    string userName = selection.UserName;
-
-                    var listeQuizQuestions = context.QuestionQuiz.Where(c => c.QuizId == quizID).ToList();
-
-            List <Question> listeQuestions = new List<Question>();
             
-                foreach(QuestionQuiz element in listeQuizQuestions)
-            {
-                listeQuestions.Add(context.Question.Find(element.QuestionId));
-                System.Diagnostics.Debug.WriteLine(element.QuestionId);
-            }
-
-
-                    ViewBag.message = "Quiz numéro " + quizID + "de l'utilisateur " + userName ;
-                    ViewBag.style = "text-success";
-                
-                return View(listeQuestions);
-
-
+            return View();
         }
+        public IActionResult AfficherQuestions(int quizChoice)
+        {
+           Console.WriteLine("hello my name is :" + quizChoice);
+
+
+            string userName = context.Quiz.Find(quizChoice).UserName;
+
+           var listeQuizQuestions = context.QuestionQuiz.Where(c => c.QuizId == quizChoice).ToList();
+
+    List <Question> listeQuestions = new List<Question>();
+
+            List<ItemOption> listeOptions = new List<ItemOption>();
+            
+       foreach(QuestionQuiz element in listeQuizQuestions)
+    {
+            listeQuestions.Add(context.Question.Find(element.QuestionId));
+            System.Diagnostics.Debug.WriteLine(element.QuestionId);
+
+                listeOptions.AddRange(context.ItemOption.Where(i => i.QuestionId == element.QuestionId).ToList());
+            }
+            Console.WriteLine(listeOptions[0].Text);
+            ViewBag.listeOptions = listeOptions;
+            ViewBag.message = "Quiz numéro " + quizChoice + " de l'utilisateur " + userName ;
+            ViewBag.style = "text-success";
+                
+           return View(listeQuestions);
+
+
+}
 
     public IActionResult PasserQuiz(string name, string email)
         {

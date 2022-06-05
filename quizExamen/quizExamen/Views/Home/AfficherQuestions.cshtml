@@ -4,42 +4,27 @@
     ViewData["Title"] = "AfficherQuestions";
 }
 
-<h1>AfficherQuestions</h1>
+<h1>@ViewBag.Message</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 @if (Model != null)
 {
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Text)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model)
-{
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Text)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.QuestionId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.QuestionId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.QuestionId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<form method="post" action="/Tests/Post">
+    @foreach (var item in Model)
+    {
+        <fieldset id="@item.QuestionId">
+            <legend> @Html.DisplayFor(modelItem => item.Text) </legend>
+            @foreach (ItemOption element in @ViewBag.listeOptions)
+            {
+                if (element.QuestionId == item.QuestionId)
+                {
+                    <input type="radio" name="@item.QuestionId" value="@element.Text"> <label for="@item.QuestionId">@element.Text </label> <br />
+                }
+
+            }
+        </fieldset>
+    }
+    <input type="submit" value="Soumettre" class="btn btn-primary" asp-action="Index" />
+    <button class="btn btn-secondary" asp-action="Index">Annuler</button>
+</form>
+
 }
