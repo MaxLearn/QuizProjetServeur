@@ -1,0 +1,47 @@
+﻿@model quizExamen.Models.NewQuizData
+
+@{
+    ViewData["Title"] = "CreateQuiz";
+}
+
+<h1>CreateQuiz</h1>
+
+<h4>NewQuizData</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateQuiz">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label" >Username</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NbrEasy" class="control-label">Nombre de questions de type <span>Facile</span></label>
+                <input asp-for="NbrEasy" class="form-control" />
+                <span asp-validation-for="NbrEasy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NbrMedium" class="control-label">Nombre de questions de type <span>Moyen</span></label>
+                <input asp-for="NbrMedium" class="form-control" />
+                <span asp-validation-for="NbrMedium" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NbrHard" class="control-label">Nombre de questions de type <span>Difficle</span></label>
+                <input asp-for="NbrHard" class="form-control" />
+                <span asp-validation-for="NbrHard" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Generate" class="btn btn-primary" asp-action="Index" />
+                <button class="btn btn-secondary" asp-action="Index">Annuler</button>
+            </div>
+        </form>
+    </div>
+</div>
+

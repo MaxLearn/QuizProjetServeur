@@ -11,7 +11,6 @@ namespace quizExamen.Models
     {
         public int QuestionId { get; set; }
         public int QuizId { get; set; }
-
         public virtual Question Question { get; set; }
         public virtual Quiz Quiz { get; set; }
     }

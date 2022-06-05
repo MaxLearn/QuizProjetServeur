@@ -20,15 +20,49 @@ namespace quizExamen.Controllers
 
             return View();
         }
-
-        public IActionResult PasserQuiz(string pattern)
+        public IActionResult AfficherQuestions(Quiz selection)
         {
-            if (pattern != null)
-            {
-                var user = context.Quiz.Where(q => q.UserName.Contains(pattern)).ToList();
+                    int quizID = selection.QuizId;
 
-                return View(user);
+                    string userName = selection.UserName;
+
+                    var listeQuizQuestions = context.QuestionQuiz.Where(c => c.QuizId == quizID).ToList();
+
+            List <Question> listeQuestions = new List<Question>();
+            
+                foreach(QuestionQuiz element in listeQuizQuestions)
+            {
+                listeQuestions.Add(context.Question.Find(element.QuestionId));
+                System.Diagnostics.Debug.WriteLine(element.QuestionId);
             }
+
+
+                    ViewBag.message = "Quiz numéro " + quizID + "de l'utilisateur " + userName ;
+                    ViewBag.style = "text-success";
+                
+                return View(listeQuestions);
+
+
+        }
+
+    public IActionResult PasserQuiz(string name, string email)
+        {
+            if (name != null && email != null)
+            {
+                var listeQuiz = context.Quiz.Where(c => c.UserName == name && c.Email == email).ToList();
+                if (listeQuiz.Count > 0)
+                {
+                    ViewBag.message = listeQuiz.Count + "Nombre de quiz trouvé(s) pour l'utilisateur: Username :" + name + " Email : " + email;
+                    ViewBag.style = "text-success";
+                }
+                else
+                {
+                    ViewBag.message = listeQuiz.Count + " Pas de résultat pour l'utilisateur:  Username :" + name + " Email : " + email; ;
+                    ViewBag.style = "text-danger";
+                }
+                return View(listeQuiz);
+            }
+
             return View();
         }
 
@@ -43,7 +77,7 @@ namespace quizExamen.Controllers
             var question = listeQuestions.ElementAt(questionIndex);
 
 
-            return (int)question.CategoryId;
+            return (int)question.QuestionId;
 
             
         }
@@ -53,48 +87,43 @@ namespace quizExamen.Controllers
             throw new NotImplementedException();
         }
 
-        public IActionResult CreateQuiz(string name, string email, int easy, int medium, int hard)
-        {            
-                Quiz quiz = new Quiz();
-                quiz.UserName = name;
-                quiz.Email = email;
-
-                context.Add<Quiz>(quiz);
-                context.SaveChanges();
-
-                var newUserId = context.Quiz.Find(name);
-
-                
-                for (int i = 0; i < easy; i++)
+        public IActionResult CreateQuiz(string name, string email, int nbrEasy, int nbrMedium, int nbrHard)
+        {
+            Quiz user = new Quiz();
+            user.UserName = name;
+            user.Email = email;
+            context.Add<Quiz>(user);
+            context.SaveChanges();
+                   
+            //DOUBLONS POSSIBLE
+                for (int i = 0; i < nbrEasy; i++)
                 {
-                    QuestionQuiz questionQuiz = new QuestionQuiz();
-                    questionQuiz.QuizId = quiz.QuizId;
-                    questionQuiz.QuestionId = PasserQuestionsParCategory(1);
+                QuestionQuiz questionQuiz = new QuestionQuiz();
+                questionQuiz.QuizId = user.QuizId;
+                questionQuiz.QuestionId = PasserQuestionsParCategory(1);
                 context.Add<QuestionQuiz>(questionQuiz);
                 context.SaveChanges();
                 }
                 
-            for (int i = 0; i < medium; i++)
+            for (int i = 0; i < nbrMedium; i++)
                 {
                 QuestionQuiz questionQuiz = new QuestionQuiz();
-                questionQuiz.QuizId = quiz.QuizId;
+                questionQuiz.QuizId = user.QuizId;
                 questionQuiz.QuestionId = PasserQuestionsParCategory(2);
                 context.Add<QuestionQuiz>(questionQuiz);
                 context.SaveChanges();
                 }
                 
-            for (int i = 0; i < hard; i++)
+            for (int i = 0; i < nbrHard; i++)
                 {
                 QuestionQuiz questionQuiz = new QuestionQuiz();
-                questionQuiz.QuizId = quiz.QuizId;
+                questionQuiz.QuizId = user.QuizId;
                 questionQuiz.QuestionId = PasserQuestionsParCategory(3);
                 context.Add<QuestionQuiz>(questionQuiz);
                 context.SaveChanges();
                 }
 
-
             return View();
-
 
         }
     }

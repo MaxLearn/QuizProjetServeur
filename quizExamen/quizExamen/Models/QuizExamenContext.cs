@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using quizExamen.Models;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -104,6 +105,12 @@ namespace quizExamen.Models
                     .HasConstraintName("FK__Question__catego__267ABA7A");
             });
 
+            modelBuilder.Entity<NewQuizData>(entity =>
+            {
+                entity.HasNoKey();
+            }
+            );
+
             modelBuilder.Entity<QuestionQuiz>(entity =>
             {
                 entity.HasKey(e => new { e.QuestionId, e.QuizId })
@@ -145,5 +152,7 @@ namespace quizExamen.Models
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        public DbSet<quizExamen.Models.NewQuizData> NewQuizData { get; set; }
     }
 }
