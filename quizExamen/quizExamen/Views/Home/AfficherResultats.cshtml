@@ -4,45 +4,47 @@
 @{
     ViewData["Title"] = "AfficherResultat";
 }
-<h1>@ViewBag.Message1</h1>
-<h2>@ViewBag.Message2</h2>
+<h2 style="color:blue; text-align:center">@ViewBag.Message1</h2>
+<h3 style="color:lawngreen; text-align:center">@ViewBag.Message2</h3>
 
 @if (Model != null)
 {
-    <form method="post" action="/Tests/Post">
-        @foreach (var item in Model)
-        {
-            <fieldset id="@item.QuestionId">
-                <legend> @Html.DisplayFor(modelItem => item.Text) </legend>
-                @foreach (ItemOption element in @ViewBag.listeOptions)
+<form method="post" action="/Tests/Post">
+    @foreach (var item in Model)
+    {
+        <fieldset id="@item.QuestionId">
+            <legend> @Html.DisplayFor(modelItem => item.Text) </legend>
+            @foreach (ItemOption element in @ViewBag.listeOptions)
+            {
+                bool check = false;
+                string color = "";
+                if (element.IsRight)
                 {
-                    bool check = false;
-                    string color = "";
-                    if (element.IsRight)
-                    {
-                        color = "green";
-                    }
-                    foreach (Answer elem in ViewBag.listeAnswers)
-                    {
-                        if(elem.OptionId == element.OptionId)
-                        {
-                            check = true;
-                        }
-                    }
-                    if(check && color!= "green")
-                    {
-                        color = "red";
-                    }
-                    if (element.QuestionId == item.QuestionId)
-                    {
-
-                        <input type="radio" name="@item.QuestionId" value="@element.OptionId" checked="@check" style=" border-color: @color"> <label style="color: @color" for="@item.QuestionId">@element.Text </label> <br />
-                    }
-
+                    color = "green";
                 }
-            </fieldset>
-        }
+                foreach (Answer elem in ViewBag.listeAnswers)
+                {
+                    if (elem.OptionId == element.OptionId)
+                    {
+                        check = true;
+                    }
+                }
+                if (check && color != "green")
+                {
+                    color = "red";
+                }
+                if (element.QuestionId == item.QuestionId)
+                {
+
+                    <input type="radio" name="@item.QuestionId" value="@element.OptionId" checked="@check" style=" border-color: @color"> <label style="color: @color" for="@item.QuestionId">@element.Text </label> <br />
+                }
+
+            }
+        </fieldset>
+    }
+    <div class="row" style="margin-left:40%;">
         <button class="btn btn-secondary" asp-action="Index">Retour</button>
-    </form>
+        </div>
+</form>
 
 }

@@ -4,42 +4,69 @@
     ViewData["Title"] = "CreateQuiz";
 }
 
-<h1>CreateQuiz</h1>
 
-<h4>NewQuizData</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="row" style="text-align:center; width:800px; margin-left:10%; margin-top:10%">
+    <div class="col-md-6" style="margin-left:23%; margin-top:10px">
+
         <form asp-action="CreateQuiz">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label" >Username</label>
-                <input asp-for="Name" class="form-control" />
+                <input asp-for="Name" class="form-control" placeholder="User name" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
+                <input asp-for="Email" class="form-control" placeholder="Email" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
+            <br>
             <div class="form-group">
-                <label asp-for="NbrEasy" class="control-label">Nombre de questions de type <span>Facile</span></label>
-                <input asp-for="NbrEasy" class="form-control" />
-                <span asp-validation-for="NbrEasy" class="text-danger"></span>
+                <div class="row">
+                    <div class="col-md-9">
+                        <label asp-for="NbrEasy" class="control-label">Nombre de questions de type <span style="color:blue">Facile</span></label>
+                    </div>
+                    <div class="col-md-3">
+                        <input asp-for="NbrEasy" class="form-control" />
+                        <span asp-validation-for="NbrEasy" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
+            <br>
             <div class="form-group">
-                <label asp-for="NbrMedium" class="control-label">Nombre de questions de type <span>Moyen</span></label>
-                <input asp-for="NbrMedium" class="form-control" />
-                <span asp-validation-for="NbrMedium" class="text-danger"></span>
+                <div class="row">
+                    <div class="col-md-9">
+                        <label asp-for="NbrMedium" class="control-label">Nombre de questions de type <span style="color:blue">Moyen</span></label>
+                    </div>
+                    <div class="col-md-3">
+                        <input asp-for="NbrMedium" class="form-control" />
+                        <span asp-validation-for="NbrMedium" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
+            <br>
             <div class="form-group">
-                <label asp-for="NbrHard" class="control-label">Nombre de questions de type <span>Difficle</span></label>
-                <input asp-for="NbrHard" class="form-control" />
-                <span asp-validation-for="NbrHard" class="text-danger"></span>
+                <div class="row">
+                    <div class="col-md-9">
+                        <label asp-for="NbrHard" class="control-label">Nombre de questions de type <span style="color:blue">Difficle</span></label>
+                    </div>
+                    <div class="col-md-3">
+                        <input asp-for="NbrHard" class="form-control" />
+                        <span asp-validation-for="NbrHard" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
+            <br>
             <div class="form-group">
-                <input type="submit" value="Generate" class="btn btn-primary" asp-action="Index" />
-                <button class="btn btn-secondary" asp-action="Index">Annuler</button>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="submit" value="Generate" class="btn btn-primary" asp-action="Index" />
+                    </div>
+                    <div class="col-md-6">
+                        <button class="btn btn-secondary" asp-action="Index">Annuler</button>
+                    </div>
+                </div>
             </div>
         </form>
     </div>

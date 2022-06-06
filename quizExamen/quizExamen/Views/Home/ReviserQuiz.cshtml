@@ -4,27 +4,41 @@
     ViewData["Title"] = "ReviserQuiz";
 }
 
-<h1>Reviser Quiz</h1>
-<form action="/Home/ReviserQuiz">
-    <label> 1. Trouver les quiz d'un utilisateur: </label>
-    <input type="text" name="name" placeholder="Username" />
-    <input type="text" name="email" placeholder="Email" />
-    <input type="submit" value="Trouver" />
-</form>
-
-@if (Model != null)
-{
-    <label> 2. Choisir un quiz: </label>
-
-    <form method="post" action="/Tests/Post">
-        <fieldset>
-            @foreach (var item in Model)
-            {
-                <input type="radio" name="quizChoice" id="@Html.DisplayFor(modelItem => item.QuizId)" value=@Html.DisplayFor(modelItem => item.QuizId) > <span>Quiz </span>@Html.DisplayFor(modelItem => item.QuizId)<br>
-            }
-            <br>
-            <input type="submit" value="Réviser" asp-action="AfficherResultats" asp-route-id="@Model.">
-            <button class="btn btn-secondary" asp-action="Index">Annuler</button>
-        </fieldset>
+<div style="text-align:center; width:800px; margin-left:10%; margin-top:10%">
+    <form action="/Home/ReviserQuiz">
+        <label style="text-align:center; color:lawngreen; font-weight:bold "> 1. Trouver les quiz d'un utilisateur </label>
+        <br />
+        <br />
+        <input type="text" name="name" placeholder="Username" />
+        <br />
+        <br />
+        <input type="text" name="email" placeholder="Email" />
+        <br />
+        <br />
+        <input style="background-color:gold; color:darkorange; font-weight:bold; border:0px; border-radius:5px " type="submit" value="Trouver" />
+        <br />
+        <br />
     </form>
-}
+
+    @if (Model != null)
+    {
+        <label style="text-align:center; color:lawngreen; font-weight:bold "> 2. Choisir un quiz </label>
+        <br />
+        <br />
+
+
+        <form method="post" action="/Tests/Post">
+            <fieldset>
+                @foreach (var item in Model)
+                {
+                    <div style="border:1px solid black; width:30%; margin-left:35%; text-align:left; padding:5px">
+                        <input type="radio" name="quizChoice" id="@Html.DisplayFor(modelItem => item.QuizId)" value=@Html.DisplayFor(modelItem => item.QuizId)> <span>Quiz </span>@Html.DisplayFor(modelItem => item.QuizId)<br>
+                    </div>
+                }
+                <br>
+                <input style="background-color:blue; color:white; border:0px; border-radius:5px; width: 70px; height:30px;" type="submit" value="Réviser" asp-action="AfficherResultats" asp-route-id="@Model.">
+                <button style="background-color:grey; color:white; border:0px; border-radius:5px; width: 70px; height:30px;" asp-action="Index">Annuler</button>
+            </fieldset>
+        </form>
+    }
+</div>

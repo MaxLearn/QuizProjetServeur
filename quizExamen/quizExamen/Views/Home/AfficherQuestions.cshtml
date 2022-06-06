@@ -4,7 +4,7 @@
     ViewData["Title"] = "AfficherQuestions";
 }
 
-<h1>@ViewBag.Message</h1>
+<h2 style="color:blue; text-align:center">@ViewBag.Message</h2>
 
 @if (Model != null)
 {
@@ -12,7 +12,7 @@
     @foreach (var item in Model)
     {
         <fieldset id="@item.QuestionId">
-            <legend> @Html.DisplayFor(modelItem => item.Text) </legend>
+            <legend > @Html.DisplayFor(modelItem => item.Text) </legend>
             @foreach (ItemOption element in @ViewBag.listeOptions)
             {
                 if (element.QuestionId == item.QuestionId)
@@ -23,8 +23,14 @@
             }
         </fieldset>
     }
-    <input type="submit" value="Soumettre" class="btn btn-primary" asp-action="Index" />
-    <button class="btn btn-secondary" asp-action="Index">Annuler</button>
+<div class="row" style="margin-left:40%">
+    <div class="col-md-2">
+        <input type="submit" value="Soumettre" class="btn btn-primary" asp-action="Index" />
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-secondary" asp-action="Index">Annuler</button>
+    </div>
+</div>
 </form>
 
 }

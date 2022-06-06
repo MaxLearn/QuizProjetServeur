@@ -8713,19 +8713,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\maxim\\.nuget\\packages\\": {}
+    "C:\\Users\\Lenovo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\maxim\\Documents\\GitHub\\QuizProjetServeur\\quizExamen\\quizExamen\\quizExamen.csproj",
+      "projectUniqueName": "C:\\Users\\Lenovo\\Source\\Repos\\QuizProjetServeur\\quizExamen\\quizExamen\\quizExamen.csproj",
       "projectName": "quizExamen",
-      "projectPath": "C:\\Users\\maxim\\Documents\\GitHub\\QuizProjetServeur\\quizExamen\\quizExamen\\quizExamen.csproj",
-      "packagesPath": "C:\\Users\\maxim\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\maxim\\Documents\\GitHub\\QuizProjetServeur\\quizExamen\\quizExamen\\obj\\",
+      "projectPath": "C:\\Users\\Lenovo\\Source\\Repos\\QuizProjetServeur\\quizExamen\\quizExamen\\quizExamen.csproj",
+      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Lenovo\\Source\\Repos\\QuizProjetServeur\\quizExamen\\quizExamen\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\maxim\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
