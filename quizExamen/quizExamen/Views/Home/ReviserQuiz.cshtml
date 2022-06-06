@@ -23,7 +23,7 @@
                 <input type="radio" name="quizChoice" id="@Html.DisplayFor(modelItem => item.QuizId)" value=@Html.DisplayFor(modelItem => item.QuizId) > <span>Quiz </span>@Html.DisplayFor(modelItem => item.QuizId)<br>
             }
             <br>
-            <input type="submit" value="Passer" asp-action="AfficherResultats" asp-route-id="@Model.">
+            <input type="submit" value="Réviser" asp-action="AfficherResultats" asp-route-id="@Model.">
             <button class="btn btn-secondary" asp-action="Index">Annuler</button>
         </fieldset>
     </form>
