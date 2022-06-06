@@ -21,11 +21,7 @@ namespace quizExamen.Controllers
             return View();
         }
 
-        public IActionResult SaveResponse( response)
-        {
-            
-            return View();
-        }
+
         public IActionResult AfficherQuestions(int quizChoice)
         {
            Console.WriteLine("hello my name is :" + quizChoice);
@@ -56,11 +52,74 @@ namespace quizExamen.Controllers
 
 }
 
-    public IActionResult PasserQuiz(string name, string email)
+        public IActionResult AfficherResultats(int quizChoice)
+        {
+            string userName = context.Quiz.Find(quizChoice).UserName;
+
+            var listeQuizQuestions = context.QuestionQuiz.Where(c => c.QuizId == quizChoice).ToList();
+
+            List<Question> listeQuestions = new List<Question>();
+
+            List<ItemOption> listeOptions = new List<ItemOption>();
+
+            var listeAnswer = context.Answer.Where(a => a.QuizId == quizChoice).ToList();
+
+            int nbrBonneReponse = 0;
+
+            foreach(Answer elem in listeAnswer)
+            {
+                if (context.ItemOption.Find(elem.OptionId).IsRight)
+                {
+                    nbrBonneReponse++;
+                }
+            }
+     
+            foreach (QuestionQuiz element in listeQuizQuestions)
+            {
+                listeQuestions.Add(context.Question.Find(element.QuestionId));
+                System.Diagnostics.Debug.WriteLine(element.QuestionId);
+
+                listeOptions.AddRange(context.ItemOption.Where(i => i.QuestionId == element.QuestionId).ToList());
+            }
+            Console.WriteLine(listeOptions[0].Text);
+            ViewBag.listeAnswers = listeAnswer;
+            ViewBag.listeOptions = listeOptions;
+            ViewBag.message1 = "Quiz numéro " + quizChoice + " de l'utilisateur " + userName;
+            ViewBag.message2 = nbrBonneReponse + "/" + listeAnswer.Count + " de bonnes réponses";
+            ViewBag.style = "text-success";
+
+            return View(listeQuestions);
+
+
+        }
+
+        public IActionResult PasserQuiz(string name, string email)
         {
             if (name != null && email != null)
             {
                 var listeQuiz = context.Quiz.Where(c => c.UserName == name && c.Email == email).ToList();
+                if (listeQuiz.Count > 0)
+                {
+                    ViewBag.message = listeQuiz.Count + "Nombre de quiz trouvé(s) pour l'utilisateur: Username :" + name + " Email : " + email;
+                    ViewBag.style = "text-success";
+                }
+                else
+                {
+                    ViewBag.message = listeQuiz.Count + " Pas de résultat pour l'utilisateur:  Username :" + name + " Email : " + email; ;
+                    ViewBag.style = "text-danger";
+                }
+                return View(listeQuiz);
+            }
+
+            return View();
+        }
+
+        public IActionResult ReviserQuiz(string name, string email)
+        {
+            if (name != null && email != null)
+            {
+                var listeQuiz = context.Quiz.Where(c => c.UserName == name && c.Email == email).ToList();
+
                 if (listeQuiz.Count > 0)
                 {
                     ViewBag.message = listeQuiz.Count + "Nombre de quiz trouvé(s) pour l'utilisateur: Username :" + name + " Email : " + email;

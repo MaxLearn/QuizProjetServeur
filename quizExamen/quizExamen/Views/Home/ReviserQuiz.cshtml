@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<quizExamen.Models.Quiz>
 
 @{
-    ViewData["Title"] = "PasserQuiz";
+    ViewData["Title"] = "ReviserQuiz";
 }
 
-<h1>Passer Quiz</h1>
-<form action="/Home/PasserQuiz">
+<h1>Reviser Quiz</h1>
+<form action="/Home/ReviserQuiz">
     <label> 1. Trouver les quiz d'un utilisateur: </label>
     <input type="text" name="name" placeholder="Username" />
     <input type="text" name="email" placeholder="Email" />
@@ -20,10 +20,10 @@
         <fieldset>
             @foreach (var item in Model)
             {
-                <input type="radio" name="quizChoice" id="@Html.DisplayFor(modelItem => item.QuizId)" value=@Html.DisplayFor(modelItem => item.QuizId)> <span>Quiz </span>@Html.DisplayFor(modelItem => item.QuizId)<br>
+                <input type="radio" name="quizChoice" id="@Html.DisplayFor(modelItem => item.QuizId)" value=@Html.DisplayFor(modelItem => item.QuizId) > <span>Quiz </span>@Html.DisplayFor(modelItem => item.QuizId)<br>
             }
             <br>
-            <input type="submit" value="Passer" asp-action="AfficherQuestions" asp-route-id="@Model." >
+            <input type="submit" value="Passer" asp-action="AfficherResultats" asp-route-id="@Model.">
             <button class="btn btn-secondary" asp-action="Index">Annuler</button>
         </fieldset>
     </form>
